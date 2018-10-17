@@ -1,7 +1,7 @@
 **I'm submitting a ...**  (check one with "x")
 - [ ] bug report
 - [ ] feature request
-- [ ] support request => Please do not submit support requests here, instead ask your query in out Gitter channel at https://gitter.im/fossasia/susi_server
+- [ ] support request => Please do not submit support requests here, instead ask your query in our [Gitter channel](https://gitter.im/fossasia/susi_server)
 
 **Current behavior:**
 <!-- Describe how the bug manifests. -->
@@ -23,7 +23,7 @@ insert any relevant code here else remove this section
 
 **System information:**
 
-<!-- Add information about the system your facing this bug on. If you think this is irrelevant or if it's a UI bug or a feature request, please remove this section -->
+<!-- Add information about the system you're facing this bug on. If you think this is irrelevant or if it's a UI bug or a feature request, please remove this section -->
 
 ```
 Your operating system

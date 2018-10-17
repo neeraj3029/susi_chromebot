@@ -4,11 +4,11 @@ var notResetBlock = document.getElementById("notreset");
 var resetBlock = document.getElementById("reset");
 var BASE_URL = "https://api.susi.ai";
 
-window.onload = function(){
+window.onload = () => {
 	showResetBlock(true);
 };
 
-function showResetBlock(show){
+let showResetBlock = (show) => {
 	if(show) {
 		notResetBlock.style.display="block";
 		resetBlock.style.display="none";
@@ -19,13 +19,9 @@ function showResetBlock(show){
 	}
 }
 
-resetForm.addEventListener("submit", function reset(event){
+resetForm.addEventListener("submit", (event) => {
 	event.preventDefault();
 	var email=document.getElementById("email").value;
-	if(!email){
-		alert("Email field cannot be empty");
-		return;
-	}
 	$("#resetbutton").button("Loading...");
 	var resetPasswordEndPoint = BASE_URL+"/aaa/recoverpassword.json?forgotemail="+ encodeURIComponent(email);
 	$.ajax({
@@ -34,13 +30,13 @@ resetForm.addEventListener("submit", function reset(event){
 		jsonpCallback: "p",
 		jsonp: "callback",
 		crossDomain: true,
-		success: function (response) {
+		success: (response) => {
 			if(response.accepted){
 				alert(response.message);
 				showResetBlock(false);
 			}
 		},
-		error: function (jqXHR) {
+		error: (jqXHR) => {
 			var msg = "";
 			console.log(jqXHR);
 			var jsonValue =  jqXHR.status;

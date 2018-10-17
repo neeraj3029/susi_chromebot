@@ -4,6 +4,7 @@
     <title>SUSI Login Portal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="container">
@@ -13,9 +14,16 @@
             <div class="col-md-8">
                 <div class="card">
                     <img src="images/susi-logo.png" class="img-fluid signin-image">
+                    
+                    <button class="btn btn-warning"   id="settings">SUSI Settings</button>
+                    <br/>
                     <div class="alert alert-danger error col-md-10" id="error">
+
                        Error
                    </div>
+                   
+
+
                     <div class="nologgedin" id="nologgedin">
                         <form id="login">
                             <div class="form-group">
@@ -24,20 +32,14 @@
                             </div>
                             <br />
                             <div class="form-group">
-                                <label for="password">Password:</label>
+                                <label class="form-control-label" for="password">Password:</label>
+                                <div class="input-group">
                                 <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <span class="field-icon">
+                                        <i class="fa fa-eye" id="toggle"></i>
+                                    </span>
+                                </div>
                             </div>
-                            <div style="text-align: center;">
-                            	<label>Click to show password</label>
-                            	<input type="button" id="toggle">
-                            </div>
-                            	<div id="showPass" style="display: none;">
-                            		<br/>
-                            		<div class="form-group" id="password2"  >
-                            			<label for="password">Show Password</label>
-                            			<input type="username" class="form-control text-muted" id="showpassword" placeholder="Password">
-                            		</div>	
-                            	</div>
                             <br />
                             <button type="submit" class="btn btn-success" name="Login" id="loginbutton" data-loading-text="Please wait">Login</button>
                             <br>
@@ -49,21 +51,32 @@
                             </p>
                         </form>
                     </div>
+                    
                     <div class="loggedin" id="loggedin">
-                        <button class="btn btn-success" name="Logout" onClick="logout(this)" id="logout">Logout</button>
-                        <br />
-                        <a  style="margin-left:35%; color:#fff;"  id="pass" href="#" >Click here to change password</a>
+                        <button class="btn btn-danger" name="Logout" id="logout">Logout</button>
+                        <br/>
+                       
+                        <div style="text-align: center">
+                            <a style="color:#fff;"  id="pass" href="#" >Click here to change password</a>
+                        </div>
                     </div>
-                     
-                    <div style="margin-left: 27%; margin-top: 3%;" >
                     <form id="cPass" style="display:none;">
-                        <input type="email" id="cemail" placeholder="Email" class="fmargin">
-                        <input type="password" id="cpassword" placeholder="Password" class="fmargin" >
-                        <input type="password" id="newPassword" placeholder="NewPassword" class="fmargin">                        
-                        <input type="submit" class="btn btn-success fmargin" style="width:330px;" >
-
+                        <div class="form-group">
+                            <input type="email" class="form-control fmargin" id="cemail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control fmargin" id="cpassword" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control fmargin" id="newPassword" placeholder="New Password">
+                            <div style="text-align: center">
+                                <small hidden id="passwordlim">Minimum 6 characters required</small>
+                            </div>
+                        </div>
+                        <div style="text-align: center">
+                            <input disabled type="submit" id="csubmit" style="width: 20rem;" class="btn btn-success fmargin">
+                        </div>
                     </form>
-                </div>
             </div>
             <div class="col-md-2">
             </div>

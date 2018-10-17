@@ -14,7 +14,9 @@ var warning = document.getElementById("warning");
 var customBackground = document.getElementById("customBackground");
 var checkLogin = localStorage.getItem("checkLogin");
 var getVoice = document.getElementById("getVoice");
+var restore = document.getElementById("restore");
 var voice;
+var localimage=document.getElementById("localupload");
 
 
 window.onload = () => {
@@ -31,36 +33,13 @@ if(micAccess) {
     micAccess.addEventListener("click", () => {
         navigator.webkitGetUserMedia({
             audio: true
-        }, function (stream) {
-            stream.stop();
-        }, function () {
+        }, (stream) => {
+            stream.getTracks().forEach(track => track.stop());
+        }, () => {
             console.log("no access");
         });
     });
 }
-if(preDefThemes) {
-preDefThemes.addEventListener("click",(e) => {
-    if(e.target!==e.currentTarget){
-        theme= e.target.id;
-        console.log(theme);
-    }
-
-    e.stopPropagation;
-    });
-}
-
-if(micAccess) {
-    micAccess.addEventListener("click", () => {
-        navigator.webkitGetUserMedia({
-            audio: true
-        }, function (stream) {
-            stream.stop();
-        }, function () {
-            console.log("no access");
-        });
-    });
-}
-
 if(preDefThemes) {
 preDefThemes.addEventListener("click",(e) => {
     if(e.target!==e.currentTarget){
@@ -124,3 +103,20 @@ if(backgroundChange) {
         }
     });
 }
+
+restore.addEventListener("click", ()=>{
+    if(confirm("This will remove your customized settings. This action is irreversible.")){
+        userItems = ["theValue", "voice", "msgTheme", "theme"];
+        userItems.forEach(item => {
+            localStorage.removeItem(item);
+        });
+    }
+});
+
+
+
+localimage.addEventListener("change",()=>{
+    var tmppath = URL.createObjectURL(localimage.files[0]);
+    localStorage.setItem("theValue",tmppath);
+    alert("Image Updated");
+});
