@@ -99,7 +99,10 @@ if(backgroundChange) {
         theValue = backUrl.value;
         if (!theValue) {
             alert("Error: No value specified");
-        } else {
+        } else if(!isImageURL(theValue)){
+            alert("Please enter valid image URL");
+        }
+         else {
             localStorage.setItem("theValue", theValue);
             alert("Successfully stored");
         }
@@ -125,3 +128,7 @@ themeColorPicker.on("change", function(color){
     themeColorPickerButton.style.backgroundColor = color;
     theme = color;
 });
+
+isImageURL = (url) => {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
